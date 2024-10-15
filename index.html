@@ -17,35 +17,6 @@
             <hr>
             <br>
             <a href="index.html">Home</a>
-            <a id="download-button" download>Download Software Test</a>
         </div>
-
-        <script>
-          const downloadButton = document.getElementById('download-button');
-        
-          downloadButton.addEventListener('click', async () => {
-            try {
-              const AWS = require('aws-sdk');
-              const s3 = new AWS.S3({
-              accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-              secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-              });
-        
-              const params = {
-                Bucket: 'alpacka',
-                Key: 'test.txt',
-                Expires: 60, // expires in 1 minute
-              };
-        
-              const presignedUrl = await s3.getSignedUrlPromise('getObject', params);
-              const anchor = document.createElement('a');
-              anchor.href = presignedUrl;
-              anchor.download = 'software-file-name';
-              anchor.click();
-            } catch (err) {
-              console.error(err);
-            }
-          });
-        </script>
     </body>
 </html>
