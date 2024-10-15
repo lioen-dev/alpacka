@@ -2,6 +2,34 @@
     <head>
         <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
         <link rel="stylesheet" href="alpacka.css">
+        <script>
+          const downloadButton = document.getElementById('download-button');
+        
+          downloadButton.addEventListener('click', async () => {
+            try {
+              const AWS = require('aws-sdk');
+              const s3 = new AWS.S3({
+              accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+              secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+              });
+        
+              const params = {
+                Bucket: 'your-bucket-name',
+                Key: 'path/to/software/file',
+                Expires: 60, // expires in 1 minute
+              };
+        
+              const presignedUrl = await s3.getSignedUrlPromise('getObject', params);
+              const anchor = document.createElement('a');
+              anchor.href = presignedUrl;
+              anchor.download = 'software-file-name';
+              anchor.click();
+            } catch (err) {
+              console.error(err);
+            }
+          });
+    </script>
+    </head>
     <body>
         <div class="wrapper">
             <div class="gradient gradient-1"></div>
