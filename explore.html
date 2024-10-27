@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Varela Round" rel="stylesheet">
+        <link rel="stylesheet" href="alpacka.css">
+        <script defer src="explore.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="gradient gradient-1"></div>
+            <div class="gradient gradient-2"></div>
+            <div class="gradient gradient-3"></div>
+        </div>
+
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="alpacka.html"><button class="nav-button">Home</button></a></li>
+                <li><a href="explore.html"><button class="nav-button">Explore</button></a></li>
+                <li><a href="upload.html"><button class="nav-button">Upload</button></a></li>
+            </ul>
+        </nav>
+
+        <div class="search-filter-section">
+            <input type="text" id="search-bar" placeholder="Search for products..." oninput="searchProducts()">
+
+            <div class="filter-container">
+                <label>
+                    Category:
+                    <select id="category-filter" onchange="filterProducts()">
+                        <option value="all">All</option>
+                        <option value="games">Games</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="tools">Tools</option>
+                        <option value="browsers">Browsers</option>
+                        <option value="devtools">Development Tools</option>
+                        <option value="security">Security</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <div id="product-grid" class="product-grid">
+            <div class="product-card" data-category="other">
+                <img src="../img/placeholder.png">
+                <h2>Placeholder</h2>
+                <p>Hey, alpacka does work but currently, because this site is <br> incredibly new, no one has uploaded their software yet.</p>
+                <a href="placeholdercontentpage.html"><button>Download PoC file</button></a>
+            </div>
+        </div>
+    </body>
+</html>
